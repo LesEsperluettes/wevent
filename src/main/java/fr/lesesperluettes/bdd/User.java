@@ -2,9 +2,9 @@ package fr.lesesperluettes.bdd;
 
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -26,6 +26,14 @@ public class User {
 
     @Audited
     private String password;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "UserTeam",
+            joinColumns = @JoinColumn(name="user_id"),
+            inverseJoinColumns = @JoinColumn(name="team_id")
+    )
+    private Set<Team> teams = new HashSet<Team>();
 
     public Integer getId() {
         return id;
