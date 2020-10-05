@@ -8,6 +8,8 @@
 
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link rel="stylesheet" href="css/index.css">
+
 
 <t:GenericLayout>
   <jsp:attribute name="title">
@@ -16,20 +18,42 @@
 
   <jsp:attribute name="body">
 
-    <div class="jumbotron shadow">
-      <h1 class="display-4">Une nouvelle façon de gérer votre école</h1>
-      <p class="lead">Profitez d'une solution profitant des nouvelles technologies pour améliorer la gestion de votre
-        établissement.</p>
-      <hr class="my-4">
-      <c:choose>
-      	<c:when test="${sessionScope.user != null}">
-      		<p>Vous êtes déja connecté, utilisez le menu en haut de la page pour naviguer</p>
-      	</c:when>
-      	<c:otherwise>
-      		<p>Connectez-vous pour profiter gratuitement de nos outils</p>
-      		<a class="btn btn-primary btn-lg" href="/SchoolMaster/connexion" role="button">C'est parti !</a>
-      	</c:otherwise>
-      </c:choose>
-    </div>
+
+      <form class="form-inline">
+          <label class="sr-only" for="lieu">Name</label>
+          <input type="text" class="form-control mb-2 mr-sm-2" id="lieu" placeholder="Le Mans, France">
+          <button type="submit" class="btn btn-outline-primary mb-2">Chercher</button>
+      </form>
+
+      <div class="card-deck">
+          <div class="card">
+              <img src="src/football.jpg" class="card-img-top" alt="...">
+              <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Match de football</h5>
+                  <p class="card-text">Venez vous entrainer avec uné équipe de passionnés !</p>
+                  <p class="card-text"><small class="text-muted">Ajouté il y a 5 heures</small></p>
+                  <button type="button" class="align-self-end btn btn-lg btn-block btn-outline-primary" style="margin-top: auto;">Voir</button>
+              </div>
+          </div>
+          <div class="card">
+              <img src="src/poker.jpg" class="card-img-top" alt="...">
+              <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Tounois de poker</h5>
+                  <p class="card-text">Devenez riche ou devenez pauvre, on ne sait jamais à quoi s'attendre...</p>
+                  <p class="card-text"><small class="text-muted">Ajouté il y a un jour</small></p>
+                  <button type="button" class="align-self-end btn btn-lg btn-block btn-outline-primary" style="margin-top: auto;">Voir</button>
+              </div>
+          </div>
+          <div class="card">
+              <img src="src/programmers.jpg" class="card-img-top" alt="...">
+              <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">24H du code</h5>
+                  <p class="card-text">Ca va sentir le mâle</p>
+                  <p class="card-text"><small class="text-muted">Ajouté il y a 2 jours</small></p>
+                  <button type="button" class="align-self-end btn btn-lg btn-block btn-outline-primary" style="margin-top: auto;">Voir</button>
+              </div>
+          </div>
+      </div>
+
   </jsp:attribute>
 </t:GenericLayout>
