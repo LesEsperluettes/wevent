@@ -47,6 +47,9 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+
+    <%@ include file="../../login_partial.jsp"%>
+
 </nav>
 
 <div class="container mt-5">
