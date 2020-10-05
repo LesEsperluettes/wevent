@@ -2,9 +2,9 @@
   <configuration default="false" name="Tomcat local" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.16" ALTERNATIVE_JRE_ENABLED="false">
     <option name="UPDATING_POLICY" value="restart-server" />
     <deployment>
-      <artifact name="wevent:war exploded">
+      <artifact name="wevent">
         <settings>
-          <option name="CONTEXT_PATH" value="/wevent_war_exploded" />
+          <option name="CONTEXT_PATH" value="" />
         </settings>
       </artifact>
     </deployment>
@@ -67,7 +67,7 @@
     <method v="2">
       <option name="Make" enabled="true" />
       <option name="BuildArtifacts" enabled="true">
-        <artifact name="wevent:war exploded" />
+        <artifact name="wevent" />
       </option>
     </method>
   </configuration>
