@@ -36,25 +36,27 @@
                   <h5 class="card-title">Match de football</h5>
                   <p class="card-text">Venez vous entrainer avec uné équipe de passionnés !</p>
                   <p class="card-text"><small class="text-muted">Ajouté il y a 5 heures</small></p>
-                  <button type="button" class="align-self-end btn btn-lg btn-block btn-outline-primary" style="margin-top: auto;">Voir</button>
+                  <a href="/evenement" class="align-self-end btn btn-lg btn-block btn-outline-primary" role="button" aria-pressed="true">Voir</a>
               </div>
           </div>
+
           <div class="card">
               <img src="src/poker.jpg" class="card-img-top" alt="...">
               <div class="card-body d-flex flex-column">
                   <h5 class="card-title">Tounois de poker</h5>
                   <p class="card-text">Devenez riche ou devenez pauvre, on ne sait jamais à quoi s'attendre...</p>
                   <p class="card-text"><small class="text-muted">Ajouté il y a un jour</small></p>
-                  <button type="button" class="align-self-end btn btn-lg btn-block btn-outline-primary" style="margin-top: auto;">Voir</button>
+                  <a href="/evenement" class="align-self-end btn btn-lg btn-block btn-outline-primary" role="button" aria-pressed="true">Voir</a>
               </div>
           </div>
+
           <div class="card">
               <img src="src/programmers.jpg" class="card-img-top" alt="...">
               <div class="card-body d-flex flex-column">
                   <h5 class="card-title">24H du code</h5>
                   <p class="card-text">Ca va sentir le mâle</p>
                   <p class="card-text"><small class="text-muted">Ajouté il y a 2 jours</small></p>
-                  <button type="button" class="align-self-end btn btn-lg btn-block btn-outline-primary" style="margin-top: auto;">Voir</button>
+                  <a href="/evenement" class="align-self-end btn btn-lg btn-block btn-outline-primary" role="button" aria-pressed="true">Voir</a>
               </div>
           </div>
       </div>

@@ -40,5 +40,14 @@
         <url-pattern>/inscription</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Evenement</servlet-name>
+        <servlet-class>Evenement</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Evenement</servlet-name>
+        <url-pattern>/evenement</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>
