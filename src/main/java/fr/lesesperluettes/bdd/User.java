@@ -3,6 +3,7 @@ package fr.lesesperluettes.bdd;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,7 +20,7 @@ public class User {
     private String surname;
 
     @Audited
-    private int age;
+    private Date age;
 
     @Audited
     private String email;
@@ -59,11 +60,11 @@ public class User {
         this.surname = surname;
     }
 
-    public int getAge() {
+    public Date getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Date age) {
         this.age = age;
     }
 
