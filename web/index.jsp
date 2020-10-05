@@ -16,16 +16,20 @@
     Accueil
   </jsp:attribute>
 
+    <jsp:attribute name="breadcrumb">
+            <li class="breadcrumb-item active"><a href="/">Accueil</a></li>
+    </jsp:attribute>
+
   <jsp:attribute name="body">
-
-
       <form class="form-inline">
           <label class="sr-only" for="lieu">Name</label>
           <input type="text" class="form-control mb-2 mr-sm-2" id="lieu" placeholder="Le Mans, France">
           <button type="submit" class="btn btn-outline-primary mb-2">Chercher</button>
       </form>
 
-      <div class="card-deck">
+      <a type="button" class="btn btn-outline-success" href="/createevent">Ajouter un évènement</a>
+
+      <div class="card-deck mt-3">
           <div class="card">
               <img src="src/football.jpg" class="card-img-top" alt="...">
               <div class="card-body d-flex flex-column">
