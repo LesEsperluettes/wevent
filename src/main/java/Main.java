@@ -1,19 +1,17 @@
-import fr.lesesperluettes.bdd.User;
-import fr.lesesperluettes.bdd.UserManager;
-import org.hibernate.HibernateException;
-import org.hibernate.Metamodel;
-import org.hibernate.query.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
-import javax.persistence.metamodel.EntityType;
+import fr.lesesperluettes.bdd.*;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
 
-    public static void main(final String[] args) throws Exception {
+    private static final Logger logger = (Logger) LogManager.getLogger(Main.class);
+
+    public static void main(final String[] args) {
         UserManager userManager = new UserManager();
         User user = new User();
         user.setName("POUPELIN2");
@@ -22,6 +20,25 @@ public class Main {
         user.setEmail("alexis.poupelin@viacesi.fr");
 
         User rt = userManager.addUser(user);
-        System.out.println(rt);
+        logger.log(Level.INFO, rt);
+        Place Place = new Place();
+        Place.setAddress("8 rue Chasse Royale");
+        Place.setName("Le Mans");
+        PlaceManager placeManager = new PlaceManager();
+        Place rL = placeManager.addPlace(Place);
+        logger.log(Level.INFO, rL);
+        ActivityType activityType = new ActivityType();
+        activityType.setDescription("Football description...");
+        activityType.setName("Football");
+        ActivityTypeManager activityTypeManager = new ActivityTypeManager();
+        ActivityType rAT = activityTypeManager.addActivityType(activityType);
+        System.out.println(rAT);
+        logger.log(Level.INFO, rAT);
+        Activity activity = new Activity();
+        activity.setName("Foot");
+        activity.setPlace(Place);
+        activity.setActivityType(activityType);
+        Set<User> users =  new HashSet<User>();
+        activity.setUsers(users);
     }
 }
