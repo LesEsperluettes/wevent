@@ -42,12 +42,12 @@
 
           <div class="form-group">
               <label class="form-check-label" for="dateEvenementDebut">Date de début l'évènement</label>
-              <input type="date" class="form-date" id="dateEvenementDebut">
+              <input type="date" class="form-control" id="dateEvenementDebut">
           </div>
 
           <div class="form-group">
               <label class="form-check-label" for="dateEvenementFin">Date de fin de l'évènement</label>
-              <input type="date" class="form-date" id="dateEvenementFin">
+              <input type="date" class="form-control" id="dateEvenementFin">
           </div>
           <button type="submit" class="btn btn-primary">Créer</button>
       </form>

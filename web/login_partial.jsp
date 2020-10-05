@@ -9,4 +9,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
-<a class="nav-link" href="/wevent/connexion" tabindex="-1" aria-disabled="true"> Se connecter </a>
+<a class="nav-link" href="/login" tabindex="-1" aria-disabled="true"> Se connecter </a>
