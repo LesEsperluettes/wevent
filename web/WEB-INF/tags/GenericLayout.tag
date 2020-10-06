@@ -56,6 +56,8 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
+    <a class="navbar-brand" href="/groupes">Groupes</a>
+
     <%@ include file="../../login_partial.jsp" %>
 
 </nav>
