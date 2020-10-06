@@ -50,6 +50,8 @@ public class Login extends HttpServlet {
                         request.getSession().setAttribute("user", user);
                         response.sendRedirect("/");
                         return;
+                    }else{
+                        feedback.put("login", "Cette combinaison mot de passe login ne correspond à aucun compte, merci de réessayer");
                     }
                 }
             }catch(Exception e){
@@ -64,6 +66,16 @@ public class Login extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+        // Check if logout is here
+        String logout = request.getParameter("logout");
+        if(logout != null) {
+            request.getSession().invalidate();
+        }
+
+        if(request.getSession().getAttribute("user") != null) {
+            response.sendRedirect("/");
+        }else{
+            this.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+        }
     }
 }

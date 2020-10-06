@@ -23,36 +23,71 @@
     </jsp:attribute>
 
     <jsp:attribute name="body">
+        <c:if test="${feedback.exception != null}">
+            <div class="alert alert-danger" role="alert">
+                ${feedback.exception}
+            </div>
+        </c:if>
 
-        <form>
+        <form action="inscription" method="POST">
             <div class="form-group">
                 <label for="email">Adresse mail</label>
-                <input type="email" class="form-control" id="email">
+                <input type="email" class="form-control ${feedback.email == null ? '' : 'is-invalid' }" id="email" name="email">
+                <c:if test="${feedback.email != null}">
+                    <div class="invalid-feedback">
+                            ${feedback.email}
+                    </div>
+                </c:if>
             </div>
 
             <div class="form-group">
                 <label for="nom">Nom</label>
-                <input type="text" class="form-control" id="nom">
+                <input type="text" class="form-control ${feedback.name == null ? '' : 'is-invalid' }" id="nom" name="name">
+                <c:if test="${feedback.name != null}">
+                    <div class="invalid-feedback">
+                            ${feedback.name}
+                    </div>
+                </c:if>
             </div>
 
             <div class="form-group">
                 <label for="prenom">Prenom</label>
-                <input type="text" class="form-control" id="prenom">
+                <input type="text" class="form-control ${feedback.surname == null ? '' : 'is-invalid' }" id="prenom" name="surname">
+                <c:if test="${feedback.surname != null}">
+                    <div class="invalid-feedback">
+                            ${feedback.surname}
+                    </div>
+                </c:if>
             </div>
 
             <div class="form-group">
                 <label for="datenaissance">Date de naissance</label>
-                <input type="date" class="form-control" id="datenaissance">
+                <input type="date" class="form-control ${feedback.birthdate == null ? '' : 'is-invalid' }" id="datenaissance" name="birthdate">
+                <c:if test="${feedback.birthdate != null}">
+                    <div class="invalid-feedback">
+                            ${feedback.birthdate}
+                    </div>
+                </c:if>
             </div>
 
             <div class="form-group">
                 <label for="motDePasse">Mot de passe</label>
-                <input type="password" class="form-control" id="motDePasse">
+                <input type="password" class="form-control ${feedback.password == null ? '' : 'is-invalid' }" id="motDePasse" name="password">
+                <c:if test="${feedback.password != null}">
+                    <div class="invalid-feedback">
+                            ${feedback.password}
+                    </div>
+                </c:if>
             </div>
 
             <div class="form-group">
                 <label for="motDePasse2">Confirmation du mot de passe</label>
-                <input type="password" class="form-control" id="motDePasse2">
+                <input type="password" class="form-control ${feedback.password_confirm == null ? '' : 'is-invalid' }" id="motDePasse2" name="password_confirm">
+                <c:if test="${feedback.password_confirm != null}">
+                    <div class="invalid-feedback">
+                            ${feedback.password_confirm}
+                    </div>
+                </c:if>
             </div>
 
             <button type="submit" class="btn btn-primary">Créer le compte</button>

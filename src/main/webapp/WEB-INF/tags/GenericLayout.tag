@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@tag description="LA DESCRIPTION" pageEncoding="UTF-8" %>
+<%@tag description="LA DESCRIPTION" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@attribute name="header" fragment="true" %>
@@ -55,10 +55,22 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ${pageContext.request.servletPath == '/index.jsp' ? 'active' : ''}">
+                <a class="nav-link" href="/">Acceuil</a>
+            </li>
+            <li class="nav-item ${pageContext.request.servletPath == '/groupes.jsp' ? 'active' : ''}">
+                <a class="nav-link" href="/groupes">Groupes</a>
+            </li>
+        </ul>
+        <span class="navbar-item">
+            <%@ include file="../../login_partial.jsp" %>
+        </span>
+    </div>
 
-    <a class="navbar-brand" href="/groupes">Groupes</a>
 
-    <%@ include file="../../login_partial.jsp" %>
+
 
 </nav>
 

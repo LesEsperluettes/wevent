@@ -69,7 +69,7 @@ public class UserManager {
             sessionUser.setSurname(user.getSurname());
             sessionUser.setName(user.getName());
             sessionUser.setEmail(user.getEmail());
-            sessionUser.setAge(user.getAge());
+            sessionUser.setBirthdate(user.getBirthdate());
             sessionUser.setPassword(user.getPassword());
 
             tr.commit();
