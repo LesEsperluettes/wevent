@@ -21,7 +21,7 @@ public class User implements Serializable {
     private String surname;
 
     @Audited
-    private Date age;
+    private Date birthdate;
 
     @Audited
     private String email;
@@ -61,12 +61,12 @@ public class User implements Serializable {
         this.surname = surname;
     }
 
-    public Date getAge() {
-        return age;
+    public Date getBirthdate() {
+        return birthdate;
     }
 
-    public void setAge(Date age) {
-        this.age = age;
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getEmail() {
@@ -91,7 +91,7 @@ public class User implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", age=" + age +
+                ", birthdate=" + birthdate +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
