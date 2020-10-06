@@ -4,20 +4,27 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 public class UserManager {
-    private SessionFactory factory;
+    private static SessionFactory factory;
 
     public UserManager(){
-        factory = HibernateUtil.getSessionFactory();
+
     }
 
-    public SessionFactory getFactory() {
+    public static SessionFactory getFactory() {
+        if(factory == null){
+            factory = new Configuration()
+                    .configure()
+                    .addAnnotatedClass(User.class)
+                    .buildSessionFactory();
+        }
         return factory;
     }
 
     public User addUser(User user){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
 
         try{
@@ -36,7 +43,7 @@ public class UserManager {
     }
 
     public void deleteUser(Integer id){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
 
         try{
@@ -53,7 +60,7 @@ public class UserManager {
     }
 
     public void update(User user){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
 
         try{

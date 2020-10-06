@@ -1,7 +1,6 @@
 package fr.lesesperluettes.servlets;
 
 import fr.lesesperluettes.auth.Password;
-import fr.lesesperluettes.bdd.HibernateUtil;
 import fr.lesesperluettes.bdd.User;
 import fr.lesesperluettes.bdd.UserManager;
 import org.hibernate.Session;
@@ -34,7 +33,7 @@ public class Login extends HttpServlet {
 
         if (feedback.size() == 0) {
             //No feedback, try to login the user
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            Session session = UserManager.getFactory().openSession();
             try{
                 List users = session.createSQLQuery("SELECT * FROM user WHERE email = :email")
                         .setParameter("email", login)
