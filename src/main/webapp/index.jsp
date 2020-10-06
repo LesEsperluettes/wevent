@@ -39,7 +39,7 @@
                       <p class="card-text"></p>
                       <p class="card-text">
                           <small class="text-muted">Ajouté ${event.getTimeText()}</small></p>
-                      <a href="/evenement" class="align-self-end btn btn-lg btn-block btn-outline-primary" role="button" aria-pressed="true">Voir</a>
+                      <a href="/evenement?id=${event.id}" class="align-self-end btn btn-lg btn-block btn-outline-primary" role="button" aria-pressed="true">Voir</a>
                   </div>
               </div>
           </c:forEach>
