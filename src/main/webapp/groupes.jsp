@@ -13,12 +13,12 @@
 
 <t:GenericLayout>
   <jsp:attribute name="title">
-    Groupes
+    fr.lesesperluettes.servlets.Groupes
   </jsp:attribute>
 
     <jsp:attribute name="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-            <li class="breadcrumb-item active">Groupes</li>
+            <li class="breadcrumb-item active">fr.lesesperluettes.servlets.Groupes</li>
     </jsp:attribute>
 
     <jsp:attribute name="body">

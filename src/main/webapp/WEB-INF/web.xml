@@ -24,6 +24,25 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Groupes</servlet-name>
+        <servlet-class>fr.lesesperluettes.servlets.Groupes</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Groupes</servlet-name>
+        <url-pattern>/groupes</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>CreateGroupe</servlet-name>
+        <servlet-class>fr.lesesperluettes.servlets.CreateGroupe</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateGroupe</servlet-name>
+        <url-pattern>/creategroupe</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>fr.lesesperluettes.servlets.Login</servlet-class>
     </servlet>

@@ -56,7 +56,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a class="navbar-brand" href="/groupes">Groupes</a>
+    <a class="navbar-brand" href="/groupes">fr.lesesperluettes.servlets.Groupes</a>
 
     <%@ include file="../../login_partial.jsp" %>
 

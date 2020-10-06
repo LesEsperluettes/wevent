@@ -18,7 +18,7 @@
 
     <jsp:attribute name="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-            <li class="breadcrumb-item"><a href="/groupes">Groupes</a></li>
+            <li class="breadcrumb-item"><a href="/groupes">fr.lesesperluettes.servlets.Groupes</a></li>
             <li class="breadcrumb-item active">Création d'un groupe</li>
     </jsp:attribute>
 
