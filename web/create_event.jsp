@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="css/index.css">
@@ -27,19 +27,23 @@
           <div class="form-group">
               <label for="nomEvenement">Nom de l'évènement</label>
               <input type="text" class="form-control" id="nomEvenement" aria-describedby="nomEvenementHelp">
-              <small id="nomEvenementHelp" class="form-text text-muted">Choisissez un nom concis pour votre évènement.</small>
+              <small id="nomEvenementHelp" class="form-text text-muted">Choisissez un nom concis pour votre
+                  évènement.</small>
           </div>
-          
+
           <div class="form-group">
-              <label for="descriptionEvenement" aria-describedby="descriptionEvenementHelp">Description de l'évènement</label>
+              <label for="descriptionEvenement" aria-describedby="descriptionEvenementHelp">Description de
+                  l'évènement</label>
               <input type="password" class="form-control" id="descriptionEvenement">
-              <small id="descriptionEvenementHelp" class="form-text text-muted">Décrivez votre évènement aux utilisateurs.</small>
+              <small id="descriptionEvenementHelp" class="form-text text-muted">Décrivez votre évènement aux
+                  utilisateurs.</small>
           </div>
 
           <div class="form-group">
               <label for="imageIllustration" aria-describedby="imageIllustrationHelp">Image d'illustration</label>
               <input type="file" class="form-control-file" id="imageIllustration">
-              <small id="imageIllustrationHelp" class="form-text text-muted">Une image d'illustration permet au visiteur d'être engagé avec la proposition d'évènement qu'il a sous les yeux.</small>
+              <small id="imageIllustrationHelp" class="form-text text-muted">Une image d'illustration permet au visiteur
+                  d'être engagé avec la proposition d'évènement qu'il a sous les yeux.</small>
           </div>
 
           <div class="form-group">
@@ -51,8 +55,19 @@
               <label class="form-check-label" for="dateEvenementFin">Date de fin de l'évènement</label>
               <input type="date" class="form-control" id="dateEvenementFin">
           </div>
+          <div class="form-group">
+              <label for="lieuEvenement">Lieu de l'évènement</label>
+              <input type="text" class="form-control" id="lieuEvenement" aria-describedby="nomEvenementHelp">
+              <small id="lieuEvenementHelp" class="form-text text-muted">Choisissez un lieu pour localiser votre
+                  événement</small>
+          </div>
+          <select multiple="multiple" name="">
+            <c:forEach var="activitytype" items="${activities}">
+            <option value="${activitytype.name}"></option>
+            </c:forEach>
+          </select>
           <button type="submit" class="btn btn-primary">Créer</button>
       </form>
 
-  </jsp:attribute>
+</jsp:attribute>
 </t:GenericLayout>
