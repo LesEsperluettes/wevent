@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 public class UserManager {
-    private static SessionFactory factory;
+    private SessionFactory factory;
 
     public UserManager(){
         factory = new Configuration()
@@ -16,7 +16,7 @@ public class UserManager {
                 .buildSessionFactory();
     }
 
-    public static SessionFactory getFactory() {
+    public SessionFactory getFactory() {
         return factory;
     }
 
