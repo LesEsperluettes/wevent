@@ -33,10 +33,10 @@
       <div class="card-deck mt-3">
           <c:forEach items="${events}" var="event">
               <div class="card">
-                  <img src="/src/default.png" class="card-img-top" alt="event image">
+                  <img src="${event.imagePath != null ? event.imagePath : '/src/default.png'}" class="card-img-top" alt="event image">
                   <div class="card-body d-flex flex-column">
                       <h5 class="card-title">${event.name}</h5>
-                      <p class="card-text"></p>
+                      <p class="card-text">${event.description}</p>
                       <p class="card-text">${event.place.name} <small>(${event.place.address})</small></p>
                       <p class="card-text">
                           <small class="text-muted">Ajouté ${event.getTimeText()}</small></p>
