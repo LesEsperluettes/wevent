@@ -23,10 +23,10 @@
     </jsp:attribute>
 
     <jsp:attribute name="body">
-      <form>
+      <form action="createevent" method="POST">
           <div class="form-group">
               <label for="nomEvenement">Nom de l'évènement</label>
-              <input type="text" class="form-control" id="nomEvenement" aria-describedby="nomEvenementHelp">
+              <input type="text" class="form-control" id="nomEvenement" name="nomEvenement" aria-describedby="nomEvenementHelp">
               <small id="nomEvenementHelp" class="form-text text-muted">Choisissez un nom concis pour votre
                   évènement.</small>
           </div>
@@ -34,38 +34,41 @@
           <div class="form-group">
               <label for="descriptionEvenement" aria-describedby="descriptionEvenementHelp">Description de
                   l'évènement</label>
-              <input type="password" class="form-control" id="descriptionEvenement">
+              <input type="text" class="form-control" id="descriptionEvenement" name="descriptionEvenement">
               <small id="descriptionEvenementHelp" class="form-text text-muted">Décrivez votre évènement aux
                   utilisateurs.</small>
           </div>
 
           <div class="form-group">
               <label for="imageIllustration" aria-describedby="imageIllustrationHelp">Image d'illustration</label>
-              <input type="file" class="form-control-file" id="imageIllustration">
+              <input type="file" class="form-control-file" id="imageIllustration" name="imageIllustration" >
               <small id="imageIllustrationHelp" class="form-text text-muted">Une image d'illustration permet au visiteur
                   d'être engagé avec la proposition d'évènement qu'il a sous les yeux.</small>
           </div>
 
           <div class="form-group">
               <label class="form-check-label" for="dateEvenementDebut">Date de début l'évènement</label>
-              <input type="date" class="form-control" id="dateEvenementDebut">
+              <input type="date" class="form-control" id="dateEvenementDebut" name="dateEvenementDebut">
           </div>
 
           <div class="form-group">
               <label class="form-check-label" for="dateEvenementFin">Date de fin de l'évènement</label>
-              <input type="date" class="form-control" id="dateEvenementFin">
+              <input type="date" class="form-control" id="dateEvenementFin" name="dateEvenementFin">
           </div>
           <div class="form-group">
               <label for="lieuEvenement">Lieu de l'évènement</label>
-              <input type="text" class="form-control" id="lieuEvenement" aria-describedby="nomEvenementHelp">
+              <input type="text" class="form-control" id="lieuEvenement" name="lieuEvenement" aria-describedby="nomEvenementHelp">
               <small id="lieuEvenementHelp" class="form-text text-muted">Choisissez un lieu pour localiser votre
                   événement</small>
           </div>
-          <select multiple="multiple" name="">
-            <c:forEach var="activitytype" items="${activities}">
-            <option value="${activitytype.name}"></option>
-            </c:forEach>
-          </select>
+          <div class="form-group">
+              <label for="typeEvenement">Type de l'évènement</label>
+              <select class="form-control" multiple name="activityType" id="typeEvenement">
+                <c:forEach items="${activitiesTypes}" var="activityType">
+                    <option value="${activityType}" >${activityType}</option>
+                </c:forEach>
+              </select>
+          </div>
           <button type="submit" class="btn btn-primary">Créer</button>
       </form>
 

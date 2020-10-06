@@ -19,10 +19,22 @@ public class Activity {
     private String name;
 
     @Audited
+    private String description;
+
+    @Audited
     private Date creationDate;
 
     @Audited
-    @ManyToOne
+    private String imagePath;
+
+    @Audited
+    private Date startDate;
+
+    @Audited
+    private Date endDate;
+
+    @Audited
+    @ManyToOne(cascade = CascadeType.ALL)
     private ActivityType activityType;
 
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
@@ -83,5 +95,53 @@ public class Activity {
 
     public void setPlace(Place place) {
         this.place = place;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", creationDate=" + creationDate +
+                ", imagePath='" + imagePath + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", activityType=" + activityType +
+                ", place=" + place +
+                ", users=" + users +
+                '}';
     }
 }

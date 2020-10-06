@@ -38,7 +38,6 @@ public class ActivityManager {
         }finally {
             session.close();
         }
-
         return activity;
     }
 
