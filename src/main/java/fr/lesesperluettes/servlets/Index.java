@@ -19,12 +19,13 @@ public class Index extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Check if a search text is here
+        String search = request.getParameter("search");
+
         Session session = ActivityManager.getFactory().openSession();
-        List<Activity> events = session.createSQLQuery("SELECT * FROM activity")
-                .addEntity(Activity.class)
+        List<Activity> events = session.createSQLQuery("SELECT * FROM activity INNER JOIN place ON activity.place_id = place.id")
+                .addEntity("activity",Activity.class)
                 .list();
-
-
 
         request.setAttribute("events",events);
         this.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);

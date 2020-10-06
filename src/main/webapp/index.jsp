@@ -22,9 +22,9 @@
     </jsp:attribute>
 
   <jsp:attribute name="body">
-      <form class="form-inline">
+      <form class="form-inline" action="index" method="get">
           <label class="sr-only" for="lieu">Name</label>
-          <input type="text" class="form-control mb-2 mr-sm-2" id="lieu" placeholder="Le Mans, France">
+          <input type="text" class="form-control mb-2 mr-sm-2" id="lieu" placeholder="Le Mans, France" name="search">
           <button type="submit" class="btn btn-outline-primary mb-2">Chercher</button>
       </form>
 
@@ -33,10 +33,11 @@
       <div class="card-deck mt-3">
           <c:forEach items="${events}" var="event">
               <div class="card">
-                  <img src="/src/football.jpg" class="card-img-top" alt="event image">
+                  <img src="/src/default.png" class="card-img-top" alt="event image">
                   <div class="card-body d-flex flex-column">
                       <h5 class="card-title">${event.name}</h5>
                       <p class="card-text"></p>
+                      <p class="card-text">${event.place.name} <small>(${event.place.address})</small></p>
                       <p class="card-text">
                           <small class="text-muted">Ajouté ${event.getTimeText()}</small></p>
                       <a href="/evenement?id=${event.id}" class="align-self-end btn btn-lg btn-block btn-outline-primary" role="button" aria-pressed="true">Voir</a>
