@@ -3,12 +3,13 @@ package fr.lesesperluettes.bdd;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;

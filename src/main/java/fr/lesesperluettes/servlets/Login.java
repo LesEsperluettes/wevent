@@ -1,8 +1,10 @@
+package fr.lesesperluettes.servlets;
+
 import fr.lesesperluettes.auth.Password;
+import fr.lesesperluettes.bdd.HibernateUtil;
 import fr.lesesperluettes.bdd.User;
 import fr.lesesperluettes.bdd.UserManager;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(name = "Login")
+@WebServlet(name = "fr.lesesperluettes.servlets.Login")
 public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Get form request
@@ -32,8 +34,7 @@ public class Login extends HttpServlet {
 
         if (feedback.size() == 0) {
             //No feedback, try to login the user
-            UserManager userManager = new UserManager();
-            Session session = userManager.getFactory().openSession();
+            Session session = HibernateUtil.getSessionFactory().openSession();
             try{
                 List users = session.createSQLQuery("SELECT * FROM user WHERE email = :email")
                         .setParameter("email", login)
