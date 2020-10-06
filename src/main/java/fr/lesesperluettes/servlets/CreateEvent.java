@@ -1,3 +1,5 @@
+package fr.lesesperluettes.servlets;
+
 import java.io.IOException;
 
 public class CreateEvent extends javax.servlet.http.HttpServlet {

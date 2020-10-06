@@ -5,14 +5,12 @@
 <hibernate-configuration>
     <session-factory>
         <property name = "hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</property>
-        <property name="connection.url">jdbc:mysql://localhost/wevent?serverTimezone=Europe/Paris</property>
+        <property name="connection.url">jdbc:mysql://localhost/wevent?serverTimezone=Europe/Paris&amp;createDatabaseIfNotExist=true&amp;useUnicode=yes&amp;characterEncoding=UTF-8</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <!-- DB schema will be updated if needed -->
-        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
         <mapping class="fr.lesesperluettes.bdd.User"/>
         <mapping class="fr.lesesperluettes.bdd.Place"/>
         <mapping class="fr.lesesperluettes.bdd.ActivityType"/>

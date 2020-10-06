@@ -10,18 +10,21 @@ public class UserManager {
     private static SessionFactory factory;
 
     public UserManager(){
-        factory = new Configuration()
-                .configure()
-                .addAnnotatedClass(User.class)
-                .buildSessionFactory();
+
     }
 
     public static SessionFactory getFactory() {
+        if(factory == null){
+            factory = new Configuration()
+                    .configure()
+                    .addAnnotatedClass(User.class)
+                    .buildSessionFactory();
+        }
         return factory;
     }
 
     public User addUser(User user){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
 
         try{
@@ -40,7 +43,7 @@ public class UserManager {
     }
 
     public void deleteUser(Integer id){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
 
         try{
@@ -57,7 +60,7 @@ public class UserManager {
     }
 
     public void update(User user){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
 
         try{
