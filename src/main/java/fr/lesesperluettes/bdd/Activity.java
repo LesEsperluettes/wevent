@@ -5,6 +5,7 @@ import org.hibernate.envers.RelationTargetAuditMode;
 import org.ocpsoft.prettytime.PrettyTime;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
@@ -150,5 +151,9 @@ public class Activity {
     public String getTimeText(){
         PrettyTime p = new PrettyTime(new Locale("fr"));
         return p.format(this.creationDate);
+    }
+
+    public String formatDate(Date date){
+        return new SimpleDateFormat("EEEE dd MMMM (HH:kk)",Locale.getDefault()).format(date);
     }
 }

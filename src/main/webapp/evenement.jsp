@@ -23,16 +23,26 @@
     </jsp:attribute>
 
     <jsp:attribute name="body">
+        <c:if test="${exception != null}">
+            <div class="alert alert-danger" role="alert">
+                ${exception}
+            </div>
+        </c:if>
 
-        <h1>Nom de l'évènement</h1>
-        <img src="src/programmers.jpg" class="img-fluid" alt="Image illustration">
+        <c:choose>
+            <c:when test="${activity != null}">
+                <h1>${activity.name}</h1>
+                <img src="${activity.imagePath}" class="img-fluid" alt="Image illustration">
 
-        <p>Description de l'évènement</p>
+                <p>${activity.description}</p>
 
-        <p>Date</p>
+                <p>Du ${activity.formatDate(activity.startDate)} au ${activity.formatDate(activity.endDate)}</p>
 
-        <p>Posté il y a 3 heures</p>
+                <p>Posté ${activity.getTimeText()}</p>
+            </c:when>
+            <c:otherwise>
 
-
+            </c:otherwise>
+        </c:choose>
   </jsp:attribute>
 </t:GenericLayout>
