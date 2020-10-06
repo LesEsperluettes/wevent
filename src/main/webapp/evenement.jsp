@@ -38,7 +38,13 @@
                             <div class="card-body">
                                 <h5 class="card-title">${activity.name}</h5>
                                 <p class="card-text">${activity.description}</p>
-                                <a href="#" class="btn btn-primary">S'inscrire</a>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Début :</strong> ${activity.formatDate(activity.startDate)}</li>
+                                <li class="list-group-item"><strong>Fin :</strong> ${activity.formatDate(activity.endDate)}</li>
+                            </ul>
+                            <div class="card-body">
+                            <a href="#" class="btn btn-primary">S'inscrire</a>
                             </div>
                         </div>
                     </div>
