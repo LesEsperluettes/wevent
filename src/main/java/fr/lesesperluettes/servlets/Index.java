@@ -12,14 +12,21 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "fr.lesesperluettes.servlets.Evenement")
-public class Evenement extends HttpServlet {
+@WebServlet(name = "Index")
+public class Index extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Session session = ActivityManager.getFactory().openSession();
+        List<Activity> events = session.createSQLQuery("SELECT * FROM activity")
+                .addEntity(Activity.class)
+                .list();
 
-        this.getServletContext().getRequestDispatcher("/evenement.jsp").forward(request, response);
+
+
+        request.setAttribute("events",events);
+        this.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }

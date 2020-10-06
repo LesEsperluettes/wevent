@@ -2,10 +2,12 @@ package fr.lesesperluettes.bdd;
 
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
+import org.ocpsoft.prettytime.PrettyTime;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 @Entity
@@ -83,5 +85,10 @@ public class Activity {
 
     public void setPlace(Place place) {
         this.place = place;
+    }
+
+    public String getTimeText(){
+        PrettyTime p = new PrettyTime(new Locale("fr"));
+        return p.format(this.creationDate);
     }
 }
