@@ -10,18 +10,21 @@ public class TeamManager {
     private static SessionFactory factory;
 
     public TeamManager(){
-        factory = new Configuration()
-                .configure()
-                .addAnnotatedClass(Team.class)
-                .buildSessionFactory();
+
     }
 
     public static SessionFactory getFactory() {
+        if(factory == null){
+            factory = new Configuration()
+                    .configure()
+                    .addAnnotatedClass(Team.class)
+                    .buildSessionFactory();
+        }
         return factory;
     }
 
     public Team create(Team team){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
 
         try{
@@ -40,7 +43,7 @@ public class TeamManager {
     }
 
     public void delete(Integer id){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
 
         try{
@@ -57,7 +60,7 @@ public class TeamManager {
     }
 
     public void update(Team team){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
 
         try{

@@ -11,18 +11,21 @@ public class PlaceManager {
     private static SessionFactory factory;
 
     public PlaceManager(){
-        factory = new Configuration()
-                .configure()
-                .addAnnotatedClass(Place.class)
-                .buildSessionFactory();
+
     }
 
     public static SessionFactory getFactory() {
+        if(factory == null){
+            factory = new Configuration()
+                    .configure()
+                    .addAnnotatedClass(Place.class)
+                    .buildSessionFactory();
+        }
         return factory;
     }
 
     public Place addPlace(Place place){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
 
         try{
@@ -40,7 +43,7 @@ public class PlaceManager {
     }
 
     public void deleteplace(Integer id){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
 
         try{
@@ -57,7 +60,7 @@ public class PlaceManager {
     }
 
     public void update(Place place){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
 
         try{

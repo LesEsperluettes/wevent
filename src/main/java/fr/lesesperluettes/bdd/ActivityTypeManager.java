@@ -11,18 +11,21 @@ public class ActivityTypeManager {
     private static SessionFactory factory;
 
     public ActivityTypeManager(){
-        factory = new Configuration()
-                .configure()
-                .addAnnotatedClass(ActivityType.class)
-                .buildSessionFactory();
+
     }
 
     public static SessionFactory getFactory() {
+        if(factory == null){
+            factory = new Configuration()
+                    .configure()
+                    .addAnnotatedClass(ActivityType.class)
+                    .buildSessionFactory();
+        }
         return factory;
     }
 
     public ActivityType addActivityType(ActivityType activityType) {
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
 
         try{
@@ -40,7 +43,7 @@ public class ActivityTypeManager {
     }
 
     public void deleteActivityType(Integer id){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
 
         try{
@@ -57,7 +60,7 @@ public class ActivityTypeManager {
     }
 
     public void update(ActivityType activityType){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
 
         try{
