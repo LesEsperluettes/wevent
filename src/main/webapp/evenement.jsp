@@ -31,14 +31,20 @@
 
         <c:choose>
             <c:when test="${activity != null}">
-                <h1>${activity.name}</h1>
-                <img src="${activity.imagePath}" class="img-fluid" alt="Image illustration">
-
-                <p>${activity.description}</p>
-
-                <p>Du ${activity.formatDate(activity.startDate)} au ${activity.formatDate(activity.endDate)}</p>
-
-                <p>Posté ${activity.getTimeText()}</p>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <img src="${activity.imagePath}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">${activity.name}</h5>
+                                <p class="card-text">${activity.description}</p>
+                                <a href="#" class="btn btn-primary">S'inscrire</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <iframe style="width: 100%; height: 100%" id="gmap_canvas" src="https://maps.google.com/maps?q=${activity.getEncodedAddress()}&t=&z=16&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    </div>
             </c:when>
             <c:otherwise>
 
