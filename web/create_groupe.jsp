@@ -24,8 +24,46 @@
 
     <jsp:attribute name="body">
 
+        <form>
+            <div class="form-group">
+                <label for="nomGroupe">Nom du groupe</label>
+                <input type="text" class="form-control" id="nomGroupe" aria-describedby="nomGroupeHelp">
+                <small id="nomGroupeHelp" class="form-text text-muted">Choisissez-bien, ce nom ne pourra pas être modifié</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="descriptionGroupe">Description du groupe</label>
+                <input type="text" class="form-control" id="descriptionGroupe" aria-describedby="descriptionGroupeHelp">
+                <small id="descriptionGroupeHelp" class="form-text text-muted">Choisissez-bien, cette description ne pourra pas être modifié</small>
+            </div>
 
-    <button type="button" class="btn btn-primary" id="ajouterClasse">Ajouter un groupe</button>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    Alexis POUPELIN
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                <label class="form-check-label" for="defaultCheck2">
+                    Théo DAVID
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+                <label class="form-check-label" for="defaultCheck3">
+                    Antoine CORGNIARD
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+                <label class="form-check-label" for="defaultCheck4">
+                    Arthr CHERAMY
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Ajouter le groupe</button>
+        </form>
 
   </jsp:attribute>
 </t:GenericLayout>
