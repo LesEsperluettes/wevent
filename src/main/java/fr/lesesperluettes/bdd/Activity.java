@@ -5,6 +5,10 @@ import org.hibernate.envers.RelationTargetAuditMode;
 import org.ocpsoft.prettytime.PrettyTime;
 
 import javax.persistence.*;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
@@ -147,5 +151,13 @@ public class Activity {
     public String getTimeText(){
         PrettyTime p = new PrettyTime(new Locale("fr"));
         return p.format(this.creationDate);
+    }
+
+    public String getEncodedAddress() throws UnsupportedEncodingException {
+        return URLEncoder.encode(this.place.getAddress(), "UTF-8");
+    }
+
+    public String formatDate(Date date){
+        return new SimpleDateFormat("EEEE dd MMMM (HH:kk)",Locale.getDefault()).format(date);
     }
 }
