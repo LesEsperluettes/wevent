@@ -21,8 +21,7 @@ public class Activity {
     @Audited
     private String description;
 
-    @Audited
-    private Date creationDate;
+    private Date creationDate = new Date();
 
     @Audited
     private String imagePath;
@@ -33,12 +32,10 @@ public class Activity {
     @Audited
     private Date endDate;
 
-    @Audited
     @ManyToOne(cascade = CascadeType.ALL)
     private ActivityType activityType;
 
-    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Place place;
 
     @ManyToMany

@@ -7,6 +7,7 @@ import org.hibernate.loader.custom.sql.SQLQueryParser;
 import org.hibernate.query.NativeQuery;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -20,6 +21,7 @@ public class CreateEvent extends javax.servlet.http.HttpServlet {
         String startDate = (request.getParameter("dateEvenementDebut"));
         String endDate = (request.getParameter("dateEvenementFin"));
         String location = request.getParameter("lieuEvenement");
+        activity.setImagePath(request.getParameter("imageIllustration"));
         Place place = new Place();
         place.setName(location);
         activity.setPlace(place);
@@ -35,6 +37,7 @@ public class CreateEvent extends javax.servlet.http.HttpServlet {
         }
         ActivityManager activityManager = new ActivityManager();
         activityManager.addActivity(activity);
+
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
