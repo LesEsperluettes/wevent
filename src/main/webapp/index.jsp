@@ -28,7 +28,9 @@
           <button type="submit" class="btn btn-outline-primary mb-2">Chercher</button>
       </form>
 
-      <a type="button" class="btn btn-outline-success" href="/createevent">Ajouter un évènement</a>
+      <c:if test="${user != null}">
+          <a type="button" class="btn btn-outline-success" href="/createevent">Ajouter un évènement</a>
+      </c:if>
 
       <div class="card-deck mt-3">
           <c:forEach items="${events}" var="event">
