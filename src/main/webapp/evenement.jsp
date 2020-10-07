@@ -11,7 +11,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="css/index.css">
 
-
 <t:GenericLayout>
   <jsp:attribute name="title">
     Evenement
@@ -44,7 +43,9 @@
                                 <li class="list-group-item"><strong>Fin :</strong> ${activity.formatDate(activity.endDate)}</li>
                             </ul>
                             <div class="card-body">
-                            <a href="#" class="btn btn-primary">S'inscrire</a>
+                                <c:if test="${user == null}"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Vous devez être connecté pour vous inscrire à un événement"></c:if>
+                                    <a href="#" class="btn btn-primary ${user == null ? 'disabled':''}" data-toggle="tooltip">S'inscrire</a>
+                                <c:if test="${user == null}"></span></c:if>
                             </div>
                         </div>
                     </div>
@@ -58,3 +59,9 @@
         </c:choose>
   </jsp:attribute>
 </t:GenericLayout>
+
+<script type="application/javascript">
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>
