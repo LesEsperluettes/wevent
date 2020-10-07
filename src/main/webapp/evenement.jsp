@@ -30,7 +30,7 @@
 
         <c:choose>
             <c:when test="${activity != null}">
-                <!-- Modal -->
+                <!-- Modal subscribe -->
                 <div class="modal fade" id="validateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -50,7 +50,31 @@
                                     <input type="hidden" value="${activity.id}" name="activityId">
                                     <button type="submit" class="btn btn-primary">Oui m'inscrire</button>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Modal unsubscribe -->
+                <div class="modal fade" id="validateUnsubscribeModal" tabindex="-1" role="dialog" aria-labelledby="unsubscribeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="unsubscribeModalLabel">Désinscription de l'activité</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Voulez-vous vous désinscrire de l'activité "${activity.name}" ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Non j'ai changé d'avis</button>
+                                <form action="evenement" method="POST">
+                                    <input type="hidden" value="true" name="unsubscribe">
+                                    <input type="hidden" value="${activity.id}" name="activityId">
+                                    <button type="submit" class="btn btn-primary">Oui me désinscrire</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -70,8 +94,21 @@
                             </ul>
                             <div class="card-body">
                                 <c:if test="${user == null}"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Vous devez être connecté pour vous inscrire à un événement"></c:if>
-                                    <a class="btn btn-primary ${user == null ? 'disabled':''}" data-toggle="modal" data-target="#validateModal">S'inscrire</a>
+                                    <c:choose>
+                                        <c:when test="${user != null && subscribed != null}">
+                                            <a class="btn btn-danger" data-toggle="modal" data-target="#validateUnsubscribeModal">Se désinscrire</a>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <a class="btn btn-primary ${user == null ? 'disabled':''}" data-toggle="modal" data-target="#validateModal">S'inscrire</a>
+                                        </c:otherwise>
+                                    </c:choose>
                                 <c:if test="${user == null}"></span></c:if>
+                                <span class="ml-2">
+                                    <c:choose>
+                                        <c:when test="${activity.users.size() == 0}">Soyez le premier à vous inscrire !</c:when>
+                                        <c:when test="${activity.users.size() > 0}">Déja ${activity.users.size()} personne(s) y participe(nt) !</c:when>
+                                    </c:choose>
+                                </span>
                             </div>
                         </div>
                     </div>
