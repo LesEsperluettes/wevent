@@ -45,7 +45,12 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Non j'ai changé d'avis</button>
-                                <button type="button" class="btn btn-primary">Oui m'inscrire</button>
+                                <form action="evenement" method="POST">
+                                    <input type="hidden" value="true" name="subscribe">
+                                    <input type="hidden" value="${activity.id}" name="activityId">
+                                    <button type="submit" class="btn btn-primary">Oui m'inscrire</button>
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -65,7 +70,7 @@
                             </ul>
                             <div class="card-body">
                                 <c:if test="${user == null}"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Vous devez être connecté pour vous inscrire à un événement"></c:if>
-                                    <a href="#" class="btn btn-primary ${user == null ? 'disabled':''}" data-toggle="modal" data-target="#validateModal">S'inscrire</a>
+                                    <a class="btn btn-primary ${user == null ? 'disabled':''}" data-toggle="modal" data-target="#validateModal">S'inscrire</a>
                                 <c:if test="${user == null}"></span></c:if>
                             </div>
                         </div>

@@ -2,6 +2,8 @@ package fr.lesesperluettes.servlets;
 
 import fr.lesesperluettes.bdd.Activity;
 import fr.lesesperluettes.bdd.ActivityManager;
+import fr.lesesperluettes.bdd.User;
+import fr.lesesperluettes.bdd.UserManager;
 import org.hibernate.Session;
 
 import javax.servlet.ServletException;
@@ -17,7 +19,36 @@ import java.util.Map;
 @WebServlet(name = "fr.lesesperluettes.servlets.Evenement")
 public class Evenement extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Get parameters
+        String subscribe = request.getParameter("subscribe");
+        String activityId = request.getParameter("activityId");
+        Map<String, String> feedback = new HashMap<String, String>();
 
+        User user = (User) request.getSession().getAttribute("user");
+
+        if(subscribe != null && user != null){
+            // Subscribe the user to the activity
+            Session sessionActivity = ActivityManager.getFactory().openSession();
+            List<Activity> activities = sessionActivity.createSQLQuery("SELECT * FROM activity WHERE id = :id")
+                    .setParameter("id",activityId)
+                    .addEntity(Activity.class)
+                    .list();
+
+            Activity activity = activities.get(0);
+            activity.getUsers().add(user);
+            sessionActivity.close();
+
+            ActivityManager activityManager = new ActivityManager();
+            activityManager.update(activity);
+
+            response.sendRedirect("/evenement?id="+activityId);
+            return;
+        }else{
+            feedback.put("subscribe","Vous devez être connecté pour vous inscrire à un événement");
+        }
+
+        request.setAttribute("feedback", feedback);
+        request.getRequestDispatcher("/evenement.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
