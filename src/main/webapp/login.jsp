@@ -24,15 +24,25 @@
 
     <jsp:attribute name="body">
 
-        <form>
+        <form action="login" method="POST">
             <div class="form-group">
                 <label for="email">Adresse mail</label>
-                <input type="email" class="form-control" id="email">
+                <input type="email" class="form-control ${feedback.login == null ? '' : 'is-invalid' }" id="email" name="login">
+                <c:if test="${feedback.login != null}">
+                    <div class="invalid-feedback">
+                        ${feedback.login}
+                    </div>
+                </c:if>
             </div>
             
             <div class="form-group">
                 <label for="motDePasse">Mot de passe</label>
-                <input type="password" class="form-control" id="motDePasse">
+                <input type="password" class="form-control ${feedback.password == null ? '' : 'is-invalid' }" id="motDePasse" name="password">
+                <c:if test="${feedback.password != null}">
+                    <div class="invalid-feedback">
+                            ${feedback.password}
+                    </div>
+                </c:if>
             </div>
 
             <button type="submit" class="btn btn-primary">Se connecter</button>

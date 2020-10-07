@@ -1,4 +1,7 @@
 import fr.lesesperluettes.bdd.*;
+import org.hibernate.Session;
+
+import java.util.List;
 
 public class Main  {
 

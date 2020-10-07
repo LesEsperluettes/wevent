@@ -3,12 +3,14 @@ package fr.lesesperluettes.bdd;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;
@@ -20,7 +22,7 @@ public class User {
     private String surname;
 
     @Audited
-    private Date age;
+    private Date birthdate;
 
     @Audited
     private String email;
@@ -60,12 +62,12 @@ public class User {
         this.surname = surname;
     }
 
-    public Date getAge() {
-        return age;
+    public Date getBirthdate() {
+        return birthdate;
     }
 
-    public void setAge(Date age) {
-        this.age = age;
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getEmail() {
@@ -90,9 +92,22 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", age=" + age +
+                ", birthdate=" + birthdate +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

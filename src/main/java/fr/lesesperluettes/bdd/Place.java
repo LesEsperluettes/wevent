@@ -43,7 +43,7 @@ public class Place {
 
     @Override
     public String toString() {
-        return "Location{" +
+        return "Place{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +

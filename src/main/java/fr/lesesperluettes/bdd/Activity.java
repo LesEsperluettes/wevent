@@ -2,10 +2,16 @@ package fr.lesesperluettes.bdd;
 
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
+import org.ocpsoft.prettytime.PrettyTime;
 
 import javax.persistence.*;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 @Entity
@@ -19,14 +25,23 @@ public class Activity {
     private String name;
 
     @Audited
-    private Date creationDate;
+    private String description;
+
+    private Date creationDate = new Date();
 
     @Audited
-    @ManyToOne
+    private String imagePath;
+
+    @Audited
+    private Date startDate;
+
+    @Audited
+    private Date endDate;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     private ActivityType activityType;
 
-    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Place place;
 
     @ManyToMany
@@ -83,5 +98,66 @@ public class Activity {
 
     public void setPlace(Place place) {
         this.place = place;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", creationDate=" + creationDate +
+                ", imagePath='" + imagePath + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", activityType=" + activityType +
+                ", place=" + place +
+                ", users=" + users +
+                '}';
+    }
+
+    public String getTimeText(){
+        PrettyTime p = new PrettyTime(new Locale("fr"));
+        return p.format(this.creationDate);
+    }
+
+    public String getEncodedAddress() throws UnsupportedEncodingException {
+        return URLEncoder.encode(this.place.getAddress(), "UTF-8");
+    }
+
+    public String formatDate(Date date){
+        return new SimpleDateFormat("EEEE dd MMMM (HH:kk)",Locale.getDefault()).format(date);
     }
 }

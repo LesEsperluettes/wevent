@@ -10,18 +10,21 @@ public class ActivityManager {
     private static SessionFactory factory;
 
     public ActivityManager(){
-        factory = new Configuration()
-                .configure()
-                .addAnnotatedClass(Activity.class)
-                .buildSessionFactory();
+
     }
 
     public static SessionFactory getFactory() {
+        if(factory == null){
+            factory = new Configuration()
+                    .configure()
+                    .addAnnotatedClass(Activity.class)
+                    .buildSessionFactory();
+        }
         return factory;
     }
 
     public Activity addActivity(Activity activity){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
 
         try{
@@ -35,12 +38,11 @@ public class ActivityManager {
         }finally {
             session.close();
         }
-
         return activity;
     }
 
     public void deleteUser(Integer id){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
         try{
             tr = session.beginTransaction();
@@ -56,7 +58,7 @@ public class ActivityManager {
     }
 
     public void update(Activity act){
-        Session session = factory.openSession();
+        Session session = getFactory().openSession();
         Transaction tr = null;
         try{
             tr = session.beginTransaction();
