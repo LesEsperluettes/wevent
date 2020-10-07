@@ -58,7 +58,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item ${pageContext.request.servletPath == '/index.jsp' ? 'active' : ''}">
-                <a class="nav-link" href="/">Acceuil</a>
+                <a class="nav-link" href="/">Accueil</a>
             </li>
             <li class="nav-item ${pageContext.request.servletPath == '/groupes.jsp' ? 'active' : ''}">
                 <a class="nav-link" href="/groupes">Groupes</a>
