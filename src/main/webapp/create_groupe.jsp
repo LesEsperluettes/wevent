@@ -23,7 +23,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="body">
-        <form>
+        <form method="post" action="creategroupe">
             <div class="form-group">
                 <label for="nomGroupe">Nom du groupe</label>
                 <input type="text" class="form-control" id="nomGroupe" name="nomGroupe" aria-describedby="nomGroupeHelp">

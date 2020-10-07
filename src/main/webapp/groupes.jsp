@@ -13,7 +13,7 @@
 
 <t:GenericLayout>
   <jsp:attribute name="title">
-    fr.lesesperluettes.servlets.Groupes
+    Groupes
   </jsp:attribute>
 
     <jsp:attribute name="breadcrumb">
@@ -22,30 +22,36 @@
     </jsp:attribute>
 
     <jsp:attribute name="body">
+        <c:choose>
+            <c:when test="${user != null}">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom du groupe</th>
+                        <th scope="col">Nombre de personnes dans le groupe</th>
+                        <th scope="col">Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${teams}" var="team">
+                        <tr>
+                            <td>${team.id}</td>
+                            <td>${team.name}</td>
+                            <td>${team.members.size()}</td>
+                            <td>
+                                <button class="btn btn-danger" disabled>Supprimer</button>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
 
-        <table class="table table-hover">
-            <thead class="thead-light">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nom du groupe</th>
-                <th scope="col">Nombre de personnes dans le groupe</th>
-                <th scope="col">Supprimer</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>Les footballers</td>
-                <td>12</td>
-                <td>
-                    <button class="btn btn-danger">Supprimer</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-
-    <a role="button" class="btn btn-primary" href="/creategroupe">Ajouter un groupe</a>
-
+                <a role="button" class="btn btn-primary" href="/creategroupe">Ajouter un groupe</a>
+            </c:when>
+            <c:otherwise>
+                <h3 class="text-center">Vous devez vous connecter pour accèder à la liste des groupes</h3>
+            </c:otherwise>
+        </c:choose>
   </jsp:attribute>
 </t:GenericLayout>
