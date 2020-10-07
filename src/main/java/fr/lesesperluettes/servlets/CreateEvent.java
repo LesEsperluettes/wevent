@@ -23,9 +23,11 @@ public class CreateEvent extends javax.servlet.http.HttpServlet {
             String startDate = (request.getParameter("dateEvenementDebut"));
             String endDate = (request.getParameter("dateEvenementFin"));
             String location = request.getParameter("lieuEvenement");
+            String address = request.getParameter("adresseEvenement");
             Map<String, String> feedback = new HashMap<String, String>();
             Place place = new Place();
             place.setName(location);
+            place.setAddress(address);
             activity.setPlace(place);
             String sActivityType = request.getParameter("activityType");
             ActivityType activityType = new ActivityType();

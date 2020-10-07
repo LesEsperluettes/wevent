@@ -57,9 +57,14 @@
           </div>
           <div class="form-group">
               <label for="lieuEvenement">Lieu de l'évènement</label>
-              <input type="text" class="form-control" id="lieuEvenement" name="lieuEvenement" aria-describedby="nomEvenementHelp" required>
+              <input type="text" class="form-control" id="lieuEvenement" name="lieuEvenement" aria-describedby="lieuEvenementHelp" required>
               <small id="lieuEvenementHelp" class="form-text text-muted">Choisissez un lieu pour localiser votre
                   événement</small>
+          </div>
+          <div class="form-group">
+              <label for="adresseEvenement">Adresse de l'évènement</label>
+              <input type="text" class="form-control" id="adresseEvenement" name="adresseEvenement" aria-describedby="adresseEvenementHelp" required>
+              <small id="adresseEvenementHelp" class="form-text text-muted">Renseigner l'adresse de l'événement</small>
           </div>
           <div class="form-group">
               <label for="typeEvenement">Type de l'évènement</label>
