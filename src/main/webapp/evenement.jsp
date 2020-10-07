@@ -83,7 +83,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="card">
-                            <img src="${activity.imagePath}" class="card-img-top" alt="...">
+                            <img src="${activity.imagePath != null ? activity.imagePath : '/src/default.png'}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">${activity.name}</h5>
                                 <p class="card-text">${activity.description}</p>

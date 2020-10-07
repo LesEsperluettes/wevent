@@ -5,6 +5,7 @@ import fr.lesesperluettes.bdd.ActivityManager;
 import fr.lesesperluettes.bdd.User;
 import fr.lesesperluettes.bdd.UserManager;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,6 +31,7 @@ public class Evenement extends HttpServlet {
         if(subscribe != null && user != null){
             // Subscribe the user to the activity
             Session sessionActivity = ActivityManager.getFactory().openSession();
+            Transaction tx = sessionActivity.beginTransaction();
             List<Activity> activities = sessionActivity.createSQLQuery("SELECT * FROM activity WHERE id = :id")
                     .setParameter("id",activityId)
                     .addEntity(Activity.class)
@@ -37,10 +39,8 @@ public class Evenement extends HttpServlet {
 
             Activity activity = activities.get(0);
             activity.getUsers().add(user);
+            tx.commit();
             sessionActivity.close();
-
-            ActivityManager activityManager = new ActivityManager();
-            activityManager.update(activity);
 
             response.sendRedirect("/evenement?id="+activityId);
             return;
@@ -51,6 +51,7 @@ public class Evenement extends HttpServlet {
         if(unsubscribe != null && user != null){
             // unSubscribe the user to the activity
             Session sessionActivity = ActivityManager.getFactory().openSession();
+            Transaction tx = sessionActivity.beginTransaction();
             List<Activity> activities = sessionActivity.createSQLQuery("SELECT * FROM activity WHERE id = :id")
                     .setParameter("id",activityId)
                     .addEntity(Activity.class)
@@ -59,10 +60,8 @@ public class Evenement extends HttpServlet {
             Activity activity = activities.get(0);
 
             activity.getUsers().remove(user);
+            tx.commit();
             sessionActivity.close();
-
-            ActivityManager activityManager = new ActivityManager();
-            activityManager.update(activity);
 
             response.sendRedirect("/evenement?id="+activityId);
             return;

@@ -19,7 +19,8 @@ public class CreateEvent extends javax.servlet.http.HttpServlet {
         try {
             activity.setName(request.getParameter("nomEvenement"));
             activity.setDescription(request.getParameter("descriptionEvenement"));
-            activity.setImagePath(request.getParameter("imageIllustration"));
+            // TODO add image upload
+            activity.setImagePath(null);
             String startDate = (request.getParameter("dateEvenementDebut"));
             String endDate = (request.getParameter("dateEvenementFin"));
             String location = request.getParameter("lieuEvenement");

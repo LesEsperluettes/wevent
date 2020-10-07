@@ -18,7 +18,7 @@
 
     <jsp:attribute name="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-            <li class="breadcrumb-item active">fr.lesesperluettes.servlets.Groupes</li>
+            <li class="breadcrumb-item active">Groupes</li>
     </jsp:attribute>
 
     <jsp:attribute name="body">
