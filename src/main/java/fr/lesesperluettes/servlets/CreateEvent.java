@@ -34,6 +34,10 @@ public class CreateEvent extends javax.servlet.http.HttpServlet {
             ActivityType activityType = new ActivityType();
             activityType.setName(sActivityType);
             activity.setActivityType(activityType);
+            User user = (User) request.getSession().getAttribute("user");
+            Set<User> users = new HashSet<User>();
+            users.add(user);
+            activity.setUsers(users);
             activity.setStartDate(new Date(new SimpleDateFormat("yyyy-MM-dd").parse(startDate).getTime()));
             activity.setEndDate(new Date(new SimpleDateFormat("yyyy-MM-dd").parse(endDate).getTime()));
             ActivityManager activityManager = new ActivityManager();
