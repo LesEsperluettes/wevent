@@ -91,6 +91,7 @@
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item"><strong>Début :</strong> ${activity.formatDate(activity.startDate)}</li>
                                 <li class="list-group-item"><strong>Fin :</strong> ${activity.formatDate(activity.endDate)}</li>
+                                <li class="list-group-item"><strong>Lieu :</strong> ${activity.place.name} <small>(${activity.place.address})</small></li>
                             </ul>
                             <div class="card-body">
                                 <c:if test="${user == null}"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Vous devez être connecté pour vous inscrire à un événement"></c:if>
