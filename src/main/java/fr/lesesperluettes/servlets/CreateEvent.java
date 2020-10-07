@@ -1,6 +1,7 @@
 package fr.lesesperluettes.servlets;
 
 import fr.lesesperluettes.bdd.*;
+import jdk.jfr.events.ExceptionThrownEvent;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.loader.custom.sql.SQLQueryParser;
@@ -15,29 +16,31 @@ import java.util.*;
 public class CreateEvent extends javax.servlet.http.HttpServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         Activity activity = new Activity();
-        activity.setName(request.getParameter("nomEvenement"));
-        activity.setDescription(request.getParameter("descriptionEvenement"));
-        activity.setImagePath(request.getParameter("imageIllustration"));
-        String startDate = (request.getParameter("dateEvenementDebut"));
-        String endDate = (request.getParameter("dateEvenementFin"));
-        String location = request.getParameter("lieuEvenement");
-        activity.setImagePath(request.getParameter("imageIllustration"));
-        Place place = new Place();
-        place.setName(location);
-        activity.setPlace(place);
-        String sActivityType = request.getParameter("activityType");
-        ActivityType activityType = new ActivityType();
-        activityType.setName(sActivityType);
-        activity.setActivityType(activityType);
         try {
+            activity.setName(request.getParameter("nomEvenement"));
+            activity.setDescription(request.getParameter("descriptionEvenement"));
+            activity.setImagePath(request.getParameter("imageIllustration"));
+            String startDate = (request.getParameter("dateEvenementDebut"));
+            String endDate = (request.getParameter("dateEvenementFin"));
+            String location = request.getParameter("lieuEvenement");
+            Map<String, String> feedback = new HashMap<String, String>();
+            Place place = new Place();
+            place.setName(location);
+            activity.setPlace(place);
+            String sActivityType = request.getParameter("activityType");
+            ActivityType activityType = new ActivityType();
+            activityType.setName(sActivityType);
+            activity.setActivityType(activityType);
             activity.setStartDate(new Date(new SimpleDateFormat("yyyy-MM-dd").parse(startDate).getTime()));
             activity.setEndDate(new Date(new SimpleDateFormat("yyyy-MM-dd").parse(endDate).getTime()));
-        } catch (ParseException e) {
-            e.printStackTrace();
+            ActivityManager activityManager = new ActivityManager();
+            activityManager.addActivity(activity);
+            response.sendRedirect("/evenement?id=" +activity.getId());
+            return;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        ActivityManager activityManager = new ActivityManager();
-        activityManager.addActivity(activity);
-
+        this.getServletContext().getRequestDispatcher("/create_event.jsp").forward(request, response);
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
@@ -55,15 +58,5 @@ public class CreateEvent extends javax.servlet.http.HttpServlet {
         }
         request.setAttribute("activitiesTypes", map);
         this.getServletContext().getRequestDispatcher("/create_event.jsp").forward(request, response);
-    }
-
-    private Place getLieuEvenement(String sLieuEvent){
-        PlaceManager placeManager = new PlaceManager();
-
-        Session session = placeManager.getFactory().openSession();
-        session.beginTransaction();
-        NativeQuery sqlQuery = session.createSQLQuery("SELECT * FROM PLACE WHERE name= :name").addEntity(Place.class).setParameter("name",sLieuEvent);
-        List results = sqlQuery.list();
-        return null;
     }
 }
