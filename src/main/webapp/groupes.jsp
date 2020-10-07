@@ -13,7 +13,7 @@
 
 <t:GenericLayout>
   <jsp:attribute name="title">
-    fr.lesesperluettes.servlets.Groupes
+    Groupes
   </jsp:attribute>
 
     <jsp:attribute name="breadcrumb">
