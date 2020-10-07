@@ -30,6 +30,27 @@
 
         <c:choose>
             <c:when test="${activity != null}">
+                <!-- Modal -->
+                <div class="modal fade" id="validateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Inscription à l'activité</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Voulez-vous vous inscrire à l'activité "${activity.name}" ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Non j'ai changé d'avis</button>
+                                <button type="button" class="btn btn-primary">Oui m'inscrire</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col">
                         <div class="card">
@@ -44,7 +65,7 @@
                             </ul>
                             <div class="card-body">
                                 <c:if test="${user == null}"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Vous devez être connecté pour vous inscrire à un événement"></c:if>
-                                    <a href="#" class="btn btn-primary ${user == null ? 'disabled':''}" data-toggle="tooltip">S'inscrire</a>
+                                    <a href="#" class="btn btn-primary ${user == null ? 'disabled':''}" data-toggle="modal" data-target="#validateModal">S'inscrire</a>
                                 <c:if test="${user == null}"></span></c:if>
                             </div>
                         </div>
