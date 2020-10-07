@@ -23,9 +23,18 @@ public class Index extends HttpServlet {
         String search = request.getParameter("search");
 
         Session session = ActivityManager.getFactory().openSession();
-        List<Activity> events = session.createSQLQuery("SELECT * FROM activity INNER JOIN place ON activity.place_id = place.id")
-                .addEntity("activity",Activity.class)
-                .list();
+        List<Activity> events = null;
+        if(search == null){
+            events = session.createSQLQuery("SELECT * FROM activity INNER JOIN place ON activity.place_id = place.id")
+                    .addEntity("activity",Activity.class)
+                    .list();
+        }else{
+            events = session.createSQLQuery("SELECT * FROM activity INNER JOIN place ON activity.place_id = place.id WHERE place.name LIKE :place")
+                    .setParameter("place","%"+search)
+                    .addEntity("activity",Activity.class)
+                    .list();
+        }
+
 
         request.setAttribute("events",events);
         this.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
